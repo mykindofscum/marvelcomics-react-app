@@ -1,7 +1,7 @@
-const mongoose = reuire('mongoose');
+const mongoose = require('mongoose');
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser:
-true })
+true });
 
 const db = mongoose.connection;
 
