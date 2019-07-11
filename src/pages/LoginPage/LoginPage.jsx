@@ -19,8 +19,8 @@ class LoginPage extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
       try {
-        await userService.signup(this.state);
-        this.props.handleSignupOrLogin();
+        await userService.login(this.state);
+        this.props.handleSignUpOrLogin();
         this.props.history.push('/');
       } catch (err) {
         alert('Invalid Credentials');

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
 
 class SignupForm extends Component {
-
   state = {
     name: '',
     email: '',
@@ -24,7 +23,7 @@ class SignupForm extends Component {
     try {
       await userService.signup(this.state);
       // Successfully signed up - show GamePage
-      this.props.handleSignupOrLogin();
+      this.props.handleSignUpOrLogin();
       this.props.history.push('/');
     } catch (err) {
       // Invalid user data (probably duplicate email)

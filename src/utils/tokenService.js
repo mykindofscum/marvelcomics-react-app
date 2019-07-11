@@ -24,7 +24,7 @@ function getUserFromToken() {
 }
 
 function removeToken() {
-    localStorage.removeToken('token');
+    localStorage.removeItem('token');
 }
 
 export default {

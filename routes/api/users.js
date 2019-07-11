@@ -11,7 +11,6 @@ router.post('/login', usersCtrl.login);
 /*---------- Protected Routes ----------*/
 
 router.use(require('../../config/auth'));
-router.post('/', checkAuth, collectionsCtrl.create);
 
 /*------------ Helper Functions --------------*/
 function checkAuth(req, res, next) {

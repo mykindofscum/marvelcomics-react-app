@@ -14,7 +14,7 @@ async function login(req, res) {
     if (!user) return res.status(401).json({err: 'bad credentials'});
     user.comparePassword(req.body.pw, (err, isMatch) => {
       if (isMatch) {
-        const token = createJWT(users);
+        const token = createJWT(user);
         res.json({token});
       } else {
         return res.status(401).json({err: 'bad credentials'});
@@ -33,6 +33,7 @@ async function signup(req, res) {
     const token = createJWT(user);
     res.json({ token });
   } catch (err) {
+      console.log(err)
     // Probably a duplicate email
     res.status(400).json(err);
   }
