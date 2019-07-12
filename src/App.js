@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link} from 'react-router-dom';
 import './App.css';
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import userService from './utils/userService';
-
-// import "bootstrap/dist/css/bootstrap.min.css";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+// import logo from "./logo.png";
 
 // Child components
 
@@ -50,7 +49,7 @@ class App extends Component {
               </ul>
           }
         </header>
-
+    
         <Switch>
           <Route exact path="/signup" render={({ history }) => 
             <SignupPage 

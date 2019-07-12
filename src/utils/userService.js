@@ -13,9 +13,10 @@ function signup(user) {
     // Probably a duplicate email
     throw new Error('Email already taken!');
   })
-  .then(({token}) => 
-    tokenService.setToken(token));
-  }
+  .then(({token}) => {
+    tokenService.setToken(token);
+  });
+}
 
   function login(creds) {
     return fetch(BASE_URL + 'login', {
@@ -28,7 +29,7 @@ function signup(user) {
       if (res.ok) return res.json();
       throw new Error('Bad Credentials!');
     })
-    .then(({token}) => tokenService.setToken(token));
+    .then(({ token }) => tokenService.setToken(token));
   }
   
   function getUser() {
