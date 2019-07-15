@@ -6,18 +6,53 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import userService from './utils/userService';
 import SearchBar from './components/SearchBar/SearchBar';
 import Collection from './components/Collection/Collection';
+import SearchResults from './components/SearchResults/SearchResults';
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
-class SearchBarPage extends Component {
-  
-  handleSearch = (query) => {
-  console.log(query);
+
+
+// Look for url encode for titleStartsWith
+const crypto = require('crypto');
+const marvelURL = 'https://gateway.marvel.com:443/v1/public/comics?'
+const apiKey = `${process.env.REACT_APP_PUBLIC_API_KEY}`;
+const privateKey = `privatekey${process.env.REACT_APP_PRIVATE_API_KEY}`;
+
+// const url = `${marvelUrl}${query}${auth}`;
+// const query = `?limit=${req.query.limit}&titleStartsWith=${req.query.title}`;
+
+const ts = new Date().getTime();
+const hash = crypto.createHash('md5').update(`${ts}${privateKey}${apiKey}`).digest('hex');
+console.log(privateKey);
+console.log(hash);
+
+export function getComics(query) {
+  return fetch(`${marvelURL}titleStartsWith=${query}&apikey=${apiKey}`, {mode: "cors"})
+  .then(res => res.json());
+}
+
+class SearchPage extends Component {
+  state = {
+    results: []
+  }
+
+  handleSearch = async (query) => {
+    console.log(query);
+    const results = await getComics(query);
+    console.log(results.data);
+    this.setState({ results: results.data });
+    // 1. Update state with the results
   }
 
   render() {
     return (
-      <SearchBar onSubmit={this.handleSearch} />
-    )
+      <div>
+        <SearchBar onSubmit={this.handleSearch} />
+        <SearchResults result={this.state.results} />
+        {/* 2. Set up results component */}
+        {/* <SearchResults results={this.state.results} /> */}
+      </div>
+    );
   }
 }
 // Child components
@@ -41,10 +76,6 @@ class App extends Component {
     this.setState({ user: userService.getUser() });
   }
 
-  
-
-
-  
   render() {
     return (
       <div className="App">
@@ -59,9 +90,6 @@ class App extends Component {
                   <Link to="/collection" className="nav-link">My Collection</Link>
                 </li>
               </ul>
-            </div>
-            <div className="flex-1">
-              <Link to="/" className="navbar-brand">Snikety Snikt's Comic Collector</Link>
             </div>
             <div className="flex-1 text-right">
                 { this.state.user
@@ -101,7 +129,7 @@ class App extends Component {
               handleSignUpOrLogin={this.handleSignUpOrLogin} 
             />
           } />
-          <Route path="/search" component={SearchBarPage} />
+          <Route path="/search" component={SearchPage} />
           <Route path="/collection" component={Collection} />
         </Switch>
       </div>
