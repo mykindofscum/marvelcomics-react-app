@@ -3,8 +3,6 @@ import React from 'react';
 import './SearchResults.css';
 
 const SearchResults = (props) => {
-    // const comicData = props.result.results;
-    // const {thumbnail} = comicData;
     let results = '';
     console.log(props.result.results);
     if (props.result.results) {
@@ -13,13 +11,12 @@ const SearchResults = (props) => {
                 <div className="comic-thumbnail-container">
                     <img className="comic-thumbnail" src={`${result.thumbnail.path}.${result.thumbnail.extension}`} alt="thumbnails" />
                 </div>
-                <div className="comic-details">
+                <div className="comic-details" key={result.id}>
                     <h5>{result.title}</h5>
-                    <p className="description">Description: </p>
+                    <p >Description:</p>
                     <p>Issue: {result.issueNumber}</p>
                     <p>Pages: {result.pageCount}</p>
                     <p>Price: ${result.prices[0].price}</p>
-                    {/* <p>Creators: {result.creators}</p> */}
                     <button onClick={(e) => props.handleAddComic(e, result)}>ADD</button>
                 </div>
             </div>        
@@ -34,7 +31,6 @@ const SearchResults = (props) => {
         )
     }
             
-
 export default SearchResults;
                     
 
