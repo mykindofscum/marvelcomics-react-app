@@ -4,31 +4,13 @@ import './App.css';
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import userService from './utils/userService';
+import comicService from './utils/comicService';
 import SearchBar from './components/SearchBar/SearchBar';
 import Collection from './components/Collection/Collection';
 import SearchResults from './components/SearchResults/SearchResults';
-// import SearchPage from '.components/SearchPage/SearchPage';
+import { getComics } from './services/mc-api.js';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// Look for url encode for titleStartsWith
-const crypto = require('crypto');
-const marvelURL = 'https://gateway.marvel.com:443/v1/public/comics?'
-const apiKey = `${process.env.REACT_APP_PUBLIC_API_KEY}`;
-const privateKey = `privatekey${process.env.REACT_APP_PRIVATE_API_KEY}`;
-
-// const url = `${marvelUrl}${query}${auth}`;
-// const query = `?limit=${req.query.limit}&titleStartsWith=${req.query.title}`;
-
-const ts = new Date().getTime();
-const hash = crypto.createHash('md5').update(`${ts}${privateKey}${apiKey}`).digest('hex');
-console.log(privateKey);
-console.log(hash);
-
-export function getComics(query) {
-  return fetch(`${marvelURL}titleStartsWith=${query}&apikey=${apiKey}`, {mode: "cors"})
-  .then(res => res.json());
-}
 
 class SearchPage extends Component {
   state = {
@@ -37,6 +19,8 @@ class SearchPage extends Component {
 
   handleSearch = async (query) => {
     console.log(query);
+    this.setState({ results: [] });
+
     const results = await getComics(query);
     this.setState({ results: results.data });
       console.log(results.data);
@@ -45,11 +29,28 @@ class SearchPage extends Component {
     // 1. Update state with the results
   }
 
+  // async componentDidMount() {
+  //   let posts = await fetch('/api/posts').then(res => res.json());
+  //   this.setState({ posts });
+  // }
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   fetch('/api/posts', 
+  //     {
+  //       method: 'POST',
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: JSON.stringify(this.state.newPost)
+  //     })
+  // }
+
   render() {
     return (
       <div>
         <SearchBar onSubmit={this.handleSearch} />
-        <SearchResults result={this.state.results} />
+        <SearchResults handleAddComic={this.props.handleAddComic} result={this.state.results} />
       </div>
     );
   }
@@ -61,6 +62,7 @@ class App extends Component {
     super();
     this.state = {
       collection: [],
+      newComic: null,
       query: '',
       user: userService.getUser()
     };
@@ -75,9 +77,12 @@ class App extends Component {
     this.setState({ user: userService.getUser() });
   }
 
-  handleAddComic = e => {
+  handleAddComic = (e, result) => {
     e.preventDefault();
-  
+
+    // this.setState({ newComic: result })
+    comicService.addComic(result);
+    
   }
 
 
@@ -143,9 +148,12 @@ class App extends Component {
           <Route exact path="/search" render={({ history }) =>
             <SearchResults
               history={history}
+
             />
           } /> */}
-          <Route path="/search" component={SearchPage} />
+          <Route path="/search" render={(props) => (
+            <SearchPage {...props} handleAddComic={this.handleAddComic} />
+          )} />
           <Route path="/collection" component={Collection} />
         </Switch>
       </div>
