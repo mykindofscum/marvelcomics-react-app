@@ -14,18 +14,17 @@ const SearchResults = (props) => {
                     <img className="comic-thumbnail" src={`${result.thumbnail.path}.${result.thumbnail.extension}`} alt="thumbnails" />
                 </div>
                 <div className="comic-details">
-                        <h2>Title: {result.title}</h2>
-                        <p>Description:</p>
+                        <h5>Title: {result.title}</h5>
+                        <p>Description: </p>
                         <p>Issue: {result.issueNumber}</p>
                         <p>Pages: {result.pageCount}</p>
-                        <p>Date: {result.date}</p>
                         <p>Price: ${result.prices[0].price}</p>
+                        <button>ADD</button>
                 </div>
-            </div>
-    ))
-}
-    console.log(results);
-        return (
+            </div>        
+        ))
+    }
+    return (
             <div>
                 <section>
                     {results}
@@ -33,6 +32,7 @@ const SearchResults = (props) => {
             </div>
         )
     }
+
 export default SearchResults;
                     
                     

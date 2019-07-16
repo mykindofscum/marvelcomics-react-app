@@ -60,7 +60,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      comics: [],
+      collection: [],
       query: '',
       user: userService.getUser()
     };
@@ -74,6 +74,13 @@ class App extends Component {
   handleSignUpOrLogin = () => {
     this.setState({ user: userService.getUser() });
   }
+
+  handleAddComic = e => {
+    e.preventDefault();
+  
+  }
+
+
 
   render() {
     return (
