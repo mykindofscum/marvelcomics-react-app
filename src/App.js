@@ -7,10 +7,9 @@ import userService from './utils/userService';
 import SearchBar from './components/SearchBar/SearchBar';
 import Collection from './components/Collection/Collection';
 import SearchResults from './components/SearchResults/SearchResults';
+// import SearchPage from '.components/SearchPage/SearchPage';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
-
 
 // Look for url encode for titleStartsWith
 const crypto = require('crypto');
@@ -33,14 +32,17 @@ export function getComics(query) {
 
 class SearchPage extends Component {
   state = {
-    results: []
+    results: [],
+    test: '3'
   }
 
   handleSearch = async (query) => {
     console.log(query);
     const results = await getComics(query);
-    console.log(results.data);
     this.setState({ results: results.data });
+      console.log(results.data);
+      return { results: results.data };
+
     // 1. Update state with the results
   }
 
@@ -49,8 +51,6 @@ class SearchPage extends Component {
       <div>
         <SearchBar onSubmit={this.handleSearch} />
         <SearchResults result={this.state.results} />
-        {/* 2. Set up results component */}
-        {/* <SearchResults results={this.state.results} /> */}
       </div>
     );
   }
@@ -129,6 +129,16 @@ class App extends Component {
               handleSignUpOrLogin={this.handleSignUpOrLogin} 
             />
           } />
+          {/* <Route exact path="/search" render={({ history }) =>
+            <SearchBar 
+              history={history}
+            />
+          } />
+          <Route exact path="/search" render={({ history }) =>
+            <SearchResults
+              history={history}
+            />
+          } /> */}
           <Route path="/search" component={SearchPage} />
           <Route path="/collection" component={Collection} />
         </Switch>
