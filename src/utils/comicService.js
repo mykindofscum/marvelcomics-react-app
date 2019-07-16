@@ -1,18 +1,31 @@
+import tokenService from "./tokenService";
+
 const BASE_URL = '/api/comics';
 
 export default {
-    addComic
+    addComic,
+    getCollection
 };
 
 function addComic(newComic) {
     return fetch(BASE_URL, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Authorization': 'Bearer ' + tokenService.getToken()
             // add list of comic details
         },
         body: JSON.stringify(newComic)
     }).then(res => {
       if (res.ok) return res;  
+    })
+}
+
+function getCollection() {
+    return fetch(BASE_URL, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
     })
 }

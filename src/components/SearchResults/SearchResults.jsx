@@ -11,7 +11,7 @@ const SearchResults = (props) => {
                 <div className="comic-thumbnail-container">
                     <img className="comic-thumbnail" src={`${result.thumbnail.path}.${result.thumbnail.extension}`} alt="thumbnails" />
                 </div>
-                <div className="comic-details" key={result.id}>
+                <div className="comic-details">
                     <h5>{result.title}</h5>
                     <p >Description:</p>
                     <p>Issue: {result.issueNumber}</p>
