@@ -14,12 +14,13 @@ const SearchResults = (props) => {
                     <img className="comic-thumbnail" src={`${result.thumbnail.path}.${result.thumbnail.extension}`} alt="thumbnails" />
                 </div>
                 <div className="comic-details">
-                        <h5>Title: {result.title}</h5>
-                        <p>Description: </p>
-                        <p>Issue: {result.issueNumber}</p>
-                        <p>Pages: {result.pageCount}</p>
-                        <p>Price: ${result.prices[0].price}</p>
-                        <button>ADD</button>
+                    <h5>{result.title}</h5>
+                    <p className="description">Description: </p>
+                    <p>Issue: {result.issueNumber}</p>
+                    <p>Pages: {result.pageCount}</p>
+                    <p>Price: ${result.prices[0].price}</p>
+                    {/* <p>Creators: {result.creators}</p> */}
+                    <button onClick={(e) => props.handleAddComic(e, result)}>ADD</button>
                 </div>
             </div>        
         ))
@@ -27,14 +28,17 @@ const SearchResults = (props) => {
     return (
             <div>
                 <section>
-                    {results}
+                    { results }
                 </section>
             </div>
         )
     }
+            
 
 export default SearchResults;
                     
+
+
                     
 
 // , issueNumber, pageCount, dates, prices

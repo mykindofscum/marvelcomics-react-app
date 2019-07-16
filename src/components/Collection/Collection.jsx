@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Collection.css';
 
-const Collection = (props) => {
-             
-    return (
-        <div className='NavBar'>
-            <h2>Collection</h2>
-        </div>
-    );
-};
-
+class Collection extends Component {             
+    render() {
+        
+        return (
+            <div className='NavBar'>
+                <h3>Collection</h3>
+            </div>
+        );
+    }
+}
 export default Collection;
