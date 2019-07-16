@@ -5,10 +5,8 @@ const collectionSchema = new Schema({
     comicId: Number,
     title: String,
     issueNumber: Number,
-    date: Number,
     pageCount: Number,
     description: String,
-    creators: String,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
