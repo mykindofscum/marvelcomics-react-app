@@ -1,5 +1,6 @@
 .App {
 	text-align: center;
+	background-color: goldenrod;
   }
   
 .App-header {
@@ -19,4 +20,9 @@ color: #61dafb;
 
 .flex-1 {
 	flex: 1;
+}
+
+body {
+	/* background-image: url('http://www.4usky.com/data/out/33/164275615-fantastic-four-wallpapers.jpg') */
+
 }
