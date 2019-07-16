@@ -5,9 +5,9 @@ const collectionSchema = new Schema({
     title: String,
     issueNumber: Number,
     date: Number,
-    pages: Number,
+    pageCount: Number,
     description: String,
-    creator: String
+    creators: String
 });
 
 module.exports = mongoose.model('Collection', collectionSchema);
