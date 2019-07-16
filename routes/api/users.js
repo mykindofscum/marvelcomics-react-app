@@ -13,6 +13,7 @@ router.post('/login', usersCtrl.login);
 
 router.use(require('../../config/auth'));
 
+
 /*------------ Helper Functions --------------*/
 function checkAuth(req, res, next) {
     if (req.user) return next();
