@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link, Redirect } from 'react-router-dom';
 import './App.css';
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -25,26 +25,9 @@ class SearchPage extends Component {
     this.setState({ results: results.data });
       console.log(results.data);
       return { results: results.data };
+    }
 
     // 1. Update state with the results
-  }
-
-  // async componentDidMount() {
-  //   let posts = await fetch('/api/posts').then(res => res.json());
-  //   this.setState({ posts });
-  // }
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   fetch('/api/posts', 
-  //     {
-  //       method: 'POST',
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify(this.state.newPost)
-  //     })
-  // }
 
   render() {
     return (
@@ -82,9 +65,7 @@ class App extends Component {
 
     // this.setState({ newComic: result })
     comicService.addComic(result);
-    
   }
-
 
 
   render() {
@@ -140,26 +121,24 @@ class App extends Component {
               handleSignUpOrLogin={this.handleSignUpOrLogin} 
             />
           } />
-          {/* <Route exact path="/search" render={({ history }) =>
-            <SearchBar 
-              history={history}
-            />
-          } />
-          <Route exact path="/search" render={({ history }) =>
-            <SearchResults
-              history={history}
 
-            />
-          } /> */}
           <Route path="/search" render={(props) => (
             <SearchPage {...props} handleAddComic={this.handleAddComic} />
           )} />
-          <Route path="/collection" component={Collection} />
-        </Switch>
-      </div>
-    );
+          <Route path="/collection" render={() =>
+            userService.getUser() ?
+            <Collection
+              collection={this.state.collection}
+              />
+            :
+              <Redirect to='/login'/>
+            } />
+          </Switch>
+        </div>
+      );
+    }
   }
-}
+  
+  export default App;
 
-export default App;
-
+  
