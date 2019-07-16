@@ -32,8 +32,7 @@ export function getComics(query) {
 
 class SearchPage extends Component {
   state = {
-    results: [],
-    test: '3'
+    results: []
   }
 
   handleSearch = async (query) => {
