@@ -9,16 +9,16 @@ const Collection = (props) => {
             <div className="comic">
                 <div className="comic-thumbnail-container">
                 
-                    <img className="comic-thumbnail" 
+                    {/* <img className="comic-thumbnail" 
                     src={`${collection.thumbnail.path}.${collection.thumbnail.extension}`} 
-                    alt="thumbnail" />
+                    alt="thumbnail" /> */}
                 </div>
                 <div className="comic-details">
                     <h5>{collection.title}</h5>
                     <p >Description:</p>
-                    <p>Issue: {collection}.issueNumber}</p>
-                    <p>Pages: {collection.pageCount}</p>
-                    <p>Price: ${collection.prices[0].price}</p>
+                    <p>Issue: {props.issueNumber}</p>
+                    <p>Pages: {props.pageCount}</p>
+                    <p>Price: ${props.price}</p>
                 </div>
             </div>        
         ))

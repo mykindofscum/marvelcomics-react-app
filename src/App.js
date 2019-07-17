@@ -141,11 +141,9 @@ class App extends Component {
             :
             <Redirect to='/login' />
             )} />
-          <Route path="/collection" render={() =>
+          <Route path="/collection" render={(props) =>
             userService.getUser() ?
-            <Collection
-              collection={this.state.collection}
-              />
+            <Collection {...props} collection={this.state.collection} />
             :
               <Redirect to='/login'/>
             } />
