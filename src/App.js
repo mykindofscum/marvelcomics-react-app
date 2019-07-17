@@ -128,8 +128,11 @@ class App extends Component {
           } />
 
           <Route path="/search" render={(props) => (
+            userService.getUser() ?
             <SearchPage {...props} handleAddComic={this.handleAddComic} />
-          )} />
+            :
+            <Redirect to='/login' />
+            )} />
           <Route path="/collection" render={() =>
             userService.getUser() ?
             <Collection
