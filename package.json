@@ -1,6 +1,9 @@
 {
   "name": "marvel-react-app",
   "version": "0.1.0",
+  "engines": {
+    "node": "11.14.0"
+    },
   "private": true,
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -41,5 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
 }
+  "proxy": "http://localhost:3001"
