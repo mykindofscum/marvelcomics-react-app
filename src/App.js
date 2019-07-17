@@ -50,6 +50,11 @@ class App extends Component {
       user: userService.getUser()
     };
   }
+// user gets comic info/details when they've searched for comic in the search page (from api/fetch call) 
+// We need to pull that info from the api and add to the database (mongodb), add to array in state and post
+// details in database, database will send back the database id. The user will add the comic info into the
+// collections.
+// 
 
   handleLogout = () => {
     userService.logout();

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const usersCtrl = require('../../controllers/users');
 const User = require('../../models/user');
+let collectionCtrl = require('../../controllers/collection');
+
 
 /*---------- Public Routes ----------*/
 router.post('/signup', usersCtrl.signup);

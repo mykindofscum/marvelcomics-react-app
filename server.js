@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Put your API routes here, before the "catch all"
 app.use('/api/users', require('./routes/api/users'));
-// app.use('/api/comics', require('./routes/api/comics'));
+app.use('/api/collections', require('./routes/api/collections'));
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

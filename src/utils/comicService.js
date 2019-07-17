@@ -1,6 +1,7 @@
 import tokenService from "./tokenService";
 
-const BASE_URL = '/api/comics';
+
+const BASE_URL = '/api/collections';
 
 export default {
     addComic,
@@ -14,6 +15,7 @@ function addComic(newComic) {
             "Content-Type": "application/json",
             'Authorization': 'Bearer ' + tokenService.getToken()
             // add list of comic details
+        
         },
         body: JSON.stringify(newComic)
     }).then(res => {
