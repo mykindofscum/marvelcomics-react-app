@@ -7,13 +7,19 @@ module.exports = {
 };
 
 function addCollection(req, res) {
-    console.log('user: ', req.user) 
-    User.findById(req.body.id, function(err, foundUser) {
-        if (err) console.log(err);
-    foundUser.collection.push(req.body.comicId);
-    foundUser.save(function (err) {
-        if (err) console.log(err);
-        res.status(200).json(req.body.comicId);
+
+    User.findById(req.user._id, function(err, foundUser) {
+        let newCollection = new Collection({
+            title: req.body.title,
+            issueNumber: req.body.issueNumber,
+            pageCount: req.body.pageCount,
+            description: req.body.description,
+            user: foundUser
+        })
+        
+        newCollection.save(function (err, savedCollection) {
+            if (err) console.log(err);
+            res.status(200).json(savedCollection);
         });
     });
 }
@@ -26,7 +32,7 @@ function addCollection(req, res) {
     // define which fields you want to use for the database
     // new Collection and then .save()
 function getCollection(req, res) {
-    Collection.find({}, function(err, collection) {
+    Collection.find({user: req.user._id}, function(err, collection) {
         if (err) console.log(err);
         res.status(200).json(collection);
     });

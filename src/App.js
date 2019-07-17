@@ -5,6 +5,7 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import userService from './utils/userService';
 import comicService from './utils/comicService';
+import tokenService from './utils/tokenService';
 import SearchBar from './components/SearchBar/SearchBar';
 import Collection from './components/Collection/Collection';
 import SearchResults from './components/SearchResults/SearchResults';
@@ -47,6 +48,20 @@ class App extends Component {
       query: '',
       user: userService.getUser()
     };
+  }
+
+  async componentDidMount() {
+    if (this.state.user) {
+      let collection = await fetch('/api/collections', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+      }).then(res => res.json())
+      
+      this.setState({ collection });
+    }
   }
 
   handleLogout = () => {

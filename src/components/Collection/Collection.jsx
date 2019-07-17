@@ -19,19 +19,18 @@ const Collection = (props) => {
                     <p>Issue: {collection}.issueNumber}</p>
                     <p>Pages: {collection.pageCount}</p>
                     <p>Price: ${collection.prices[0].price}</p>
-                    {/* <button onClick={(e) => props.handleAddComic(e, result)}>ADD</button> */}
                 </div>
             </div>        
         ))
     }
 
-return (
-    <div className="collection">
-            <h3>Collection</h3>
-        <section>
-            { collection }
-        </section>
-    </div>
+    return (
+        <div className="collection">
+                <h3>Collection</h3>
+            <section>
+                { collection }
+            </section>
+        </div>
     )
 }
 export default Collection;
