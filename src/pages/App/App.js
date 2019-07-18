@@ -37,7 +37,6 @@ class SearchPage extends Component {
     );
   }
 }
-// Child components
 
 class App extends Component {
   constructor() {
@@ -76,7 +75,6 @@ class App extends Component {
   handleAddComic = (e, result) => {
     e.preventDefault();
 
-    // this.setState({ newComic: result })
     comicService.addComic(result);
   }
 
