@@ -78,7 +78,6 @@ class App extends Component {
     comicService.addComic(result);
   }
 
-
   render() {
     return (
       <div className="App">
