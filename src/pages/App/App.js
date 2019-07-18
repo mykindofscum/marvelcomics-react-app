@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link, Redirect } from 'react-router-dom';
 import './App.css';
-import SignupPage from './pages/SignupPage/SignupPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import userService from './utils/userService';
-import comicService from './utils/comicService';
-import tokenService from './utils/tokenService';
-import SearchBar from './components/SearchBar/SearchBar';
-import Collection from './components/Collection/Collection';
-import SearchResults from './components/SearchResults/SearchResults';
-import { getComics } from './services/mc-api.js';
+import SignupPage from '../SignupPage/SignupPage';
+import LoginPage from '../LoginPage/LoginPage';
+import userService from '../../utils/userService';
+import comicService from '../../utils/comicService';
+import tokenService from '../../utils/tokenService';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import Collection from '../../components/Collection/Collection';
+import SearchResults from '../../components/SearchResults/SearchResults';
+import { getComics } from '../../services/mc-api.js';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
