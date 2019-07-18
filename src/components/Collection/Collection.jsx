@@ -1,6 +1,5 @@
 import React from 'react';
 import './Collection.css';
-// import comicService from '../../utils/comicService';
 
 const Collection = (props) => {             
     let collection = [];
