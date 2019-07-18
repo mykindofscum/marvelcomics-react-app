@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link, Redirect } from 'react-router-dom';
 import './App.css';
-import SignUpPage from '../SignUpPage/SignUpPage.jsx';
+import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 import comicService from '../../utils/comicService';
@@ -120,7 +120,7 @@ class App extends Component {
   
         <Switch>
           <Route exact path="/signup" render={({ history }) => 
-            <SignUpPage 
+            <SignupPage 
               history={history}
               handleSignUpOrLogin={this.handleSignUpOrLogin}
             />
