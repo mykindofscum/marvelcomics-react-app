@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link, Redirect } from 'react-router-dom';
 import './App.css';
-import SignupPage from '../SignupPage/SignupPage';
+import SignupPage from '../SignupPage/SignupPage.jsx';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 import comicService from '../../utils/comicService';
