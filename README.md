@@ -9,7 +9,7 @@ Marvel Comics Collector is an app where users can search for Marvel comics, keep
 
 *Planning:* Trello https://trello.com/b/TzFrOEij/marvel-comics-collector
 
-Heroku 
+Heroku https://marvelcomics-react-app.herokuapp.com
 
 *Unsolved Problems:* Styling issues with the description. Could add some ternary for when search results come up empty. Problem adding a comic to a collection into the database.
 
