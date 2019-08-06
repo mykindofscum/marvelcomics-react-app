@@ -11,7 +11,7 @@ const SearchResults = (props) => {
                 </div>
                 <div className="comic-details">
                     <h6>{result.title}</h6>
-                    <p className="description">Description: {result.description}</p>
+                    <p className="description">Description: </p>
                     <p>Issue: {result.issueNumber}</p>
                     <p>Pages: {result.pageCount}</p>
                     <p>Price: ${result.prices[0].price}</p>

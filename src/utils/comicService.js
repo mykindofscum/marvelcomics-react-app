@@ -16,16 +16,18 @@ function addComic(newComic) {
             'Authorization': 'Bearer ' + tokenService.getToken()
         },
         body: JSON.stringify(newComic)
+
     }).then(res => {
       if (res.ok) return res;  
     })
 }
 
 function getCollection() {
-    return fetch(BASE_URL, {
+    return fetch(BASE_URL, + 'collection', {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
         }
     })
 }
+

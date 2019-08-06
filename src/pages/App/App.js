@@ -45,7 +45,14 @@ class App extends Component {
       collection: [],
       newComic: null,
       query: '',
+      // title: '',
+      // issueNumber: '',
+      // pageCount: 0,
+      // description: '',
+      // thumbnail: '',
+      // price: 0,
       user: userService.getUser()
+
     };
   }
 
@@ -76,6 +83,12 @@ class App extends Component {
     e.preventDefault();
 
     comicService.addComic(result);
+  }
+
+  handleDelComic = (e, collection) => {
+    e.preventDefault();
+
+
   }
 
   render() {
@@ -140,7 +153,10 @@ class App extends Component {
             )} />
           <Route path="/collection" render={(props) =>
             userService.getUser() ?
-            <Collection {...props} collection={this.state.collection} />
+            <Collection 
+              {...props} collection={this.state.collection}
+                showTypes={this.state.showTypes}
+              />
             :
               <Redirect to='/login'/>
             } />

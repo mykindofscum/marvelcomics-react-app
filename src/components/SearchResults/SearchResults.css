@@ -12,13 +12,13 @@
     margin: 0px 20px;
 }
 
-.comic-details {
-    float: left;
-    margin: 10px;
-}
-
 .comic-thumbnail {
     width: 150px;
+}
+
+.comic-details {
+float: left;
+    margin: 10px;
 }
 
 .zoom {

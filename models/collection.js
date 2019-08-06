@@ -6,7 +6,8 @@ const collectionSchema = new Schema({
     issueNumber: Number,
     pageCount: Number,
     description: String,
-    // thumbnail: Mixed,
+    thumbnail: String,
+    price: Number,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'

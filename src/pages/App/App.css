@@ -24,4 +24,5 @@ color: #61dafb;
 
 body {
 	background-image: url('../../wideMarvel.jpg');
+	background-repeat: no-repeat;
 }
