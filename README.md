@@ -11,6 +11,6 @@ Marvel Comics Collector is an app where users can search for Marvel comics, keep
 
 Heroku https://marvelcomics-react-app.herokuapp.com
 
-*Unsolved Problems:* Styling issues with the description. Could add some ternary for when search results come up empty. Problem adding a comic to a collection into the database.
+*Unsolved Problems:* Styling issues with the description. Could add some ternary for when search results come up empty. Problem adding a comic to a collection into the database. Must refresh in order to see a comic added into collection.
 
 *Future Enhancements:* Use react-window to allow large lists to be rendered efficiently. Comments for comics added to collection. Deleting a comic from collection. Chatroom.  
